@@ -17,18 +17,27 @@ import java.util.Map;
  */
 public class Responses {
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class RegisterResponse {
         private String message;
         private Long userId;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class MessageResponse {
         private String message;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class TransactionResponse {
         private Long id;
         private BigDecimal amount;
@@ -38,27 +47,42 @@ public class Responses {
         private TransactionType type;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class TransactionListResponse {
         private List<TransactionResponse> transactions;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class CategoryResponse {
         private Long id;
         private String name;
         private TransactionType type;
-
         @JsonProperty("custom")
-        private Boolean custom;
+        private boolean custom;
+
+        public boolean isCustom() {
+            return custom;
+        }
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class CategoryListResponse {
         private List<CategoryResponse> categories;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class GoalResponse {
         private Long id;
         private String goalName;
@@ -70,12 +94,18 @@ public class Responses {
         private BigDecimal remainingAmount;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class GoalListResponse {
         private List<GoalResponse> goals;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class MonthlyReportResponse {
         private int month;
         private int year;
@@ -84,7 +114,10 @@ public class Responses {
         private BigDecimal netSavings;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class YearlyReportResponse {
         private int year;
         private Map<String, BigDecimal> totalIncome;
@@ -92,7 +125,10 @@ public class Responses {
         private BigDecimal netSavings;
     }
 
-    @Data @Builder @NoArgsConstructor @AllArgsConstructor
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class ErrorResponse {
         private String message;
         private int status;
