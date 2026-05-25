@@ -48,26 +48,39 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
+
+            .formLogin(AbstractHttpConfigurer::disable)
+            .httpBasic(AbstractHttpConfigurer::disable)
+
             .authenticationProvider(authenticationProvider())
+
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/", "/index.html", "/favicon.ico").permitAll()
                 .anyRequest().authenticated()
             )
+
             .exceptionHandling(ex -> ex
                 .authenticationEntryPoint((request, response, authException) -> {
                     response.setContentType("application/json");
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    response.getWriter().write("{\"message\": \"Authentication required\", \"status\": 401}");
+                    response.getWriter().write(
+                        "{\"message\": \"Authentication required\", \"status\": 401}"
+                    );
                 })
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
                     response.setContentType("application/json");
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                    response.getWriter().write("{\"message\": \"Access denied\", \"status\": 403}");
+                    response.getWriter().write(
+                        "{\"message\": \"Access denied\", \"status\": 403}"
+                    );
                 })
             )
-            .headers(headers -> headers.frameOptions(frame -> frame.disable())); // allow H2 console
+
+            .headers(headers ->
+                headers.frameOptions(frame -> frame.disable())
+            );
 
         return http.build();
     }
