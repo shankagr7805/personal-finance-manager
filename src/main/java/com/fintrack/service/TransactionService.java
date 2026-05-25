@@ -60,13 +60,16 @@ public class TransactionService {
     /**
      * Returns all transactions for the current user, with optional filters.
      */
-    public TransactionListResponse getAll(LocalDate startDate, LocalDate endDate, Long categoryId) {
+    public TransactionListResponse getAll(LocalDate startDate, LocalDate endDate, String categoryName) {
         User user = getCurrentUser();
 
         Category categoryFilter = null;
-        if (categoryId != null) {
-            categoryFilter = categoryRepository.findById(categoryId)
-                    .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+
+        if (categoryName != null) {
+            categoryFilter = categoryRepository
+                    .findAccessibleByName(categoryName, user)
+                    .orElseThrow(() ->
+                            new ResourceNotFoundException("Category not found"));
         }
 
         List<Transaction> transactions = transactionRepository.findByUserWithFilters(

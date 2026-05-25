@@ -1,5 +1,6 @@
 package com.fintrack.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fintrack.entity.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,6 +47,7 @@ public class Responses {
     public static class CategoryResponse {
         private String name;
         private TransactionType type;
+        @JsonProperty("custom")
         private boolean isCustom;
     }
 

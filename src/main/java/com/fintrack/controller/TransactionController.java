@@ -37,11 +37,27 @@ public class TransactionController {
      * Returns all transactions, optionally filtered by date range and category.
      */
     @GetMapping
+
     public ResponseEntity<TransactionListResponse> getAll(
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-            @RequestParam(required = false) Long categoryId) {
-        return ResponseEntity.ok(transactionService.getAll(startDate, endDate, categoryId));
+
+            @RequestParam(required = false)
+
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+
+            LocalDate startDate,
+
+            @RequestParam(required = false)
+
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+
+            LocalDate endDate,
+
+            @RequestParam(required = false) String category) {
+
+        return ResponseEntity.ok(
+
+                transactionService.getAll(startDate, endDate, category));
+
     }
 
     /**
