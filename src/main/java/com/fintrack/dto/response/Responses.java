@@ -50,7 +50,7 @@ public class Responses {
         private TransactionType type;
 
         @JsonProperty("custom")
-        private boolean custom;
+        private Boolean custom;
     }
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor
