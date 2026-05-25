@@ -45,10 +45,12 @@ public class Responses {
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor
     public static class CategoryResponse {
+        private Long id;
         private String name;
         private TransactionType type;
+
         @JsonProperty("custom")
-        private boolean isCustom;
+        private boolean custom;
     }
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor

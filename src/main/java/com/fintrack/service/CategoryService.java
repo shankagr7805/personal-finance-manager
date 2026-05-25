@@ -98,10 +98,12 @@ public class CategoryService {
     }
 
     private CategoryResponse toResponse(Category c) {
+
         return CategoryResponse.builder()
+                .id(c.getId())
                 .name(c.getName())
                 .type(c.getType())
-                .isCustom(c.isCustom())
+                .custom(c.isCustom())
                 .build();
     }
 
