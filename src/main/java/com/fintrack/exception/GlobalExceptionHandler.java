@@ -1,6 +1,8 @@
 package com.fintrack.exception;
 
 import com.fintrack.dto.response.Responses.ErrorResponse;
+import com.fintrack.dto.response.Responses.MessageResponse;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -43,6 +45,13 @@ public class GlobalExceptionHandler {
                 .map(FieldError::getDefaultMessage)
                 .collect(Collectors.joining("; "));
         return buildResponse(HttpStatus.BAD_REQUEST, message);
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<MessageResponse> handleIllegalArgumentException(
+            IllegalArgumentException ex) {
+
+        return ResponseEntity.badRequest()
+                .body(new MessageResponse(ex.getMessage()));
     }
 
     private ResponseEntity<ErrorResponse> buildResponse(HttpStatus status, String message) {
