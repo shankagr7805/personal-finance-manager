@@ -1,6 +1,5 @@
 package com.fintrack.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fintrack.entity.TransactionType;
 import lombok.AllArgsConstructor;
