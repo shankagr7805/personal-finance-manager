@@ -61,7 +61,6 @@ public class Responses {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class CategoryResponse {
-        private Long id;
         private String name;
         private TransactionType type;
 

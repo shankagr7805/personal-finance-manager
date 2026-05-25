@@ -100,7 +100,6 @@ public class CategoryService {
     private CategoryResponse toResponse(Category c) {
 
         return CategoryResponse.builder()
-                .id(c.getId())
                 .name(c.getName())
                 .type(c.getType())
                 .custom(c.isCustom())
