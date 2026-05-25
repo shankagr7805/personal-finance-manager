@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: personal-finance-manager
+    env: java
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/personal-finance-manager-1.0.0.jar
+    envVars:
+      - key: SERVER_PORT
+        value: 10000
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:h2:mem:fintrackdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
