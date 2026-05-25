@@ -65,13 +65,8 @@ public class Responses {
         private String name;
         private TransactionType type;
 
-        @JsonProperty("custom")
+        @JsonProperty("isCustom")
         private boolean custom;
-
-        @JsonIgnore
-        public boolean isCustom() {
-            return custom;
-        }
     }
 
     @Data
