@@ -33,16 +33,12 @@ public class CategoryController {
      * Creates a new custom category for the authenticated user.
      */
     @PostMapping
-    public ResponseEntity<?> create(
+    ResponseEntity<CategoryResponse> create(
             @Valid @RequestBody CategoryRequest request) {
 
         CategoryResponse category = categoryService.create(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(java.util.Map.of(
-                        "name", category.getName(),
-                        "type", category.getType(),
-                        "isCustom", true));
+        return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
 
     /**
