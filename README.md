@@ -2,6 +2,10 @@
 
 A RESTful API for tracking personal income, expenses, and savings goals — built with Spring Boot 3 and secured via session-based authentication.
 
+<img width="1470" height="798" alt="Screenshot 2026-05-25 at 11 32 03 PM" src="https://github.com/user-attachments/assets/61991fbe-931e-42a3-9a87-f7f98f69ac16" />
+
+<img width="1470" height="800" alt="Screenshot 2026-05-25 at 11 33 09 PM" src="https://github.com/user-attachments/assets/8aa44fa8-acdd-4d31-bb1a-44e67d2f59a0" />
+
 ---
 
 ## Tech Stack
